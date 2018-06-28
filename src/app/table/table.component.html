@@ -3,3 +3,13 @@
     [source]="characters">
 </ng2-smart-table>
 {{characters| json}}
+
+
+<label>   hi:</label>
+<input  ng2-auto-complete
+  [(ngModel)]="selected"
+  [source]="tdata"
+
+  placeholder="Contients"
+   />
+<br/>selected model: {{selected | json}}<br/><br/>
