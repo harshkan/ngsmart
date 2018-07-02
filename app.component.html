@@ -1,0 +1,35 @@
+<!--
+<input  ng2-auto-complete
+  [(ngModel)]="selected"
+  [source]="observableSource.bind(this)"
+
+  placeholder="Contients"
+   />
+<br/>selected model: {{selected | json}}<br/><br/>
+-->
+<!--
+<div class="col-md-3">
+  <div class="row">
+    <input class="form-control" type='file' (change)='convertFile(input)' id='fileInput' #input>
+  </div>
+
+  <div class="row" >
+    <b>CSV Data</b>  : <br> {{  text || "upload CSV" }}
+  </div>
+
+  <div class="row">
+    <b>Converted JSON</b> : <br> {{ JSONData || "upload CSV to conver"  }}
+  </div>
+</div>
+
+<button  type="submit"  (click)="downloadButtonPush()">download</button>
+<app-table></app-table>
+-->
+<img src="https://media1.tenor.com/images/8ac12962c05648c55ca85771f4a69b2d/tenor.gif?itemid=9212724" >
+{{cookieValue}}
+{{request|json}}
+<button type="submit" value="submit" (click)="su()">download</button>
+<input type="file" (change)="onFileChange($event)" multiple="false" />
+{{dataaa|json}}
+<app-formm></app-formm>
+<app-table></app-table>

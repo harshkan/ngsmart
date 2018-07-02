@@ -2,23 +2,29 @@ import { Component , OnInit} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import { Requirement } from './requirement';
 import 'rxjs/add/observable/of';
 //import { Angular5Csv } from 'angular5-csv/Angular5-csv';
-
-
+import { DemoService } from './demo.service';
+import { CookieService } from 'ngx-cookie-service';
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   //providers: [Angular5Csv],
+  providers: [DemoService,CookieService ]
+
 
 })
 export class AppComponent implements OnInit{
   title = 'app';
    selected: string;
+   tdata:any=[];
    //title = 'csvTOjson works!';
    text: any ;
   JSONData : any;
+  request:any=[];
   csvJSON(csvText) {
    var lines = csvText.split("\n");
 
@@ -55,6 +61,47 @@ export class AppComponent implements OnInit{
    this.csvJSON(text);
  };
 
+}
+dataaa:any=[];
+wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
+onFileChange(evt: any) {
+		/* wire up file reader */
+		const target: DataTransfer = <DataTransfer>(evt.target);
+		if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+		const reader: FileReader = new FileReader();
+		reader.onload = (e: any) => {
+			/* read workbook */
+			const bstr: string = e.target.result;
+			const wb: XLSX.WorkBook = XLSX.read(bstr, {type: 'binary'});
+
+			/* grab first sheet */
+			const wsname: string = wb.SheetNames[0];
+			const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+
+			/* save data */
+			this.dataaa = (XLSX.utils.sheet_to_json(ws, {header: 1}));
+      for(var i=1;i<this.dataaa.length;i++)
+      {
+          var req=new Requirement();
+          req.Name=this.dataaa[i][0];
+          req.Age=this.dataaa[i][1];
+          req.Average=this.dataaa[i][2];
+          req.Approve=this.dataaa[i][3];
+          req.Description=this.dataaa[i][4];
+          this.request.push(req);
+      }
+		};
+		reader.readAsBinaryString(target.files[0]);
+
+	}
+su()
+{
+const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.request);
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, worksheet, 'Sheet1');
+    /* save to file */
+    XLSX.writeFile(wb, "tracking.xlsx");
 }
     dataa = [
   {
@@ -159,7 +206,7 @@ I
        let html = `<span>${data.name}</span>`;
        return this._sanitizer.bypassSecurityTrustHtml(html);
      }
-  constructor(public http: Http,private _sanitizer: DomSanitizer,) {
+  constructor(public http: Http,private _sanitizer: DomSanitizer,private _demoService:DemoService,private cookieService: CookieService) {
 
 
   }
@@ -168,13 +215,33 @@ I
     new Angular5Csv(this.dataa, 'MyFileName');
 
   }*/
-    ngOnInit() {
+  cookieValue = 'UNKNOWN';
 
-        this.getdata();
+    ngOnInit() {
+      this.getallrequests();
+      this.cookieService.set( 'Test',"hello cookie" );
+this.cookieValue = this.cookieService.get('Test');
+
+
+
+    //    this.getdata();
       //  this.downloadButtonPush();
 
 
     }
+    getallrequests()
+{
+  this._demoService.getallrequests().subscribe(
+    // the first argument is a function which runs on success
+    data => { this.tdata = data;
+console.log(this.tdata);
+  },
+    // the second argument is a function which runs on error
+    err => console.error(err),
+    // the third argument is a function which runs on completion
+    () => console.log('done loading table')
+  );
+}
 getdata()
 {
   let url: string = './assets/data.json'
