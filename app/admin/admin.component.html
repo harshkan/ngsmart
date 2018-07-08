@@ -1,0 +1,198 @@
+<button type="submit" (click)="deptform()">DEPARTMENT</button>
+<button type="submit" (click)="titleform()">TITLE</button>
+<button type="submit" (click)="locationform()">LOCATION</button>
+<button type="submit" (click)="rleadform()">RECRUITMENT LEAD</button>
+<button type="submit" (click)="lmform()">LINE MANAGER</button>
+<button type="submit" (click)="statusform()">STATUS</button>
+<button type="submit" (click)="designationform()">DESIGNATION</button>
+<button type="submit" (click)="skillform()">SKILLSET</button>
+<div *ngIf="dept" >
+  <h2>ADD DEPARTMENT</h2>
+  <form #add ="ngForm" (ngSubmit)="adddept($event,add.value)" >
+    <label>DEPARTMENT:</label>
+    <input type="text" id="dep" name="dp" [(ngModel)]="NAME">
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+  <h2>UPDATE DEPARTMENT</h2>
+  <form  (ngSubmit)="updatedept($event,add.value)" >
+    <label>DEPARTMENT:</label>
+    <input type="text"  name="dpPP" [(ngModel)]="UNAME">
+    <br>
+    <label>ENABLE:</label>
+    <select id="dPPPP" name="dpPPPP" [(ngModel)]="ENABLE">
+      <option>Y</option>
+      <option>N</option>
+    </select>
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+
+
+</div>
+<div *ngIf="title" >
+  <h2>ADD TITLE</h2>
+  <form #add ="ngForm" (ngSubmit)="addtitle($event,add.value)" >
+    <label>TITLE:</label>
+    <input type="text" id="tti" name="tt" [(ngModel)]="NAME">
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+  <h2>UPDATE DEPARTMENT</h2>
+  <form  (ngSubmit)="updatetitle($event,add.value)" >
+    <label>TITLE:</label>
+    <input type="text"  name="ewre" [(ngModel)]="UNAME">
+    <br>
+    <label>ENABLE:</label>
+    <select id="dPPPP" name="dpPPPP" [(ngModel)]="ENABLE">
+      <option>Y</option>
+      <option>N</option>
+    </select>
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+</div>
+<div *ngIf="location" >
+  <h2>ADD LOCATION</h2>
+  <form #add ="ngForm" (ngSubmit)="addlocation($event,add.value)" >
+    <label>LOCATION:</label>
+    <input type="text" id="loc" name="lc" [(ngModel)]="NAME">
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+  <h2>UPDATE LOCATION</h2>
+  <form  (ngSubmit)="updatelocation($event,add.value)" >
+    <label>LOCATION:</label>
+    <input type="text"  name="ewre" [(ngModel)]="UNAME">
+    <br>
+    <label>ENABLE:</label>
+    <select id="dPPPP" name="dpPPPP" [(ngModel)]="ENABLE">
+      <option>Y</option>
+      <option>N</option>
+    </select>
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+</div>
+<div *ngIf="rlead" >
+<h2>ADD RECRUITMENT LEAD</h2>
+  <form #add ="ngForm" (ngSubmit)="addrlead($event,add.value)" >
+    <label>RECRUITMENT LEAD:</label>
+    <input type="text" id="loc" name="lc" [(ngModel)]="NAME">
+    <br>
+    <label>GPIN:</label>
+    <input type="number" id="G" name="GP" [(ngModel)]="GPN">
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+  <h2>UPDATE RECRUITMENT LEAD</h2>
+  <form  (ngSubmit)="updaterlead($event,add.value)" >
+    <label>RECRUITMENT LEAD:</label>
+    <input type="text"  name="ewre" [(ngModel)]="UNAME">
+    <br>
+    <label>ENABLE:</label>
+    <select id="dPPPP" name="dpPPPP" [(ngModel)]="ENABLE">
+      <option>Y</option>
+      <option>N</option>
+    </select>
+    <br>
+    <label>GPIN:</label>
+    <input type="number" id="G" name="GP" [(ngModel)]="UGPN">
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+</div>
+<div *ngIf="lm" >
+  <h2>ADD LINE MANAGER</h2>
+  <form #add ="ngForm" (ngSubmit)="addlm($event,add.value)" >
+    <label>LINE MANAGER:</label>
+    <input type="text" id="lmm" name="lmmm" [(ngModel)]="NAME">
+    <br>
+    <label>GPIN:</label>
+    <input type="number" id="GPP" name="GPPPPPP" [(ngModel)]="GPN">
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+  <h2>UPDATE LINE MANAGER</h2>
+  <form  (ngSubmit)="updatelm($event,add.value)" >
+    <label>LINE MANAGER:</label>
+    <input type="text"  name="ewre" [(ngModel)]="UNAME">
+    <br>
+    <label>ENABLE:</label>
+    <select id="dPPPP" name="dpPPPP" [(ngModel)]="ENABLE">
+      <option>Y</option>
+      <option>N</option>
+    </select>
+    <br>
+    <label>GPIN:</label>
+    <input type="number" id="G" name="GP" [(ngModel)]="UGPN">
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+</div>
+<div *ngIf="status" >
+  <h2>ADD STATUS</h2>
+  <form #add ="ngForm" (ngSubmit)="addstatus($event,add.value)" >
+    <label>STATUS:</label>
+    <input type="text" id="st" name="stt" [(ngModel)]="NAME">
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+  <h2>UPDATE STATUS</h2>
+  <form  (ngSubmit)="updatestatus($event,add.value)" >
+    <label>STATUS:</label>
+    <input type="text"  name="ewre" [(ngModel)]="UNAME">
+    <br>
+    <label>ENABLE:</label>
+    <select id="dPPPP" name="dpPPPP" [(ngModel)]="ENABLE">
+      <option>Y</option>
+      <option>N</option>
+    </select>
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+</div>
+<div *ngIf="designation" >
+  <h2>ADD DESIGNATION</h2>
+  <form #add ="ngForm" (ngSubmit)="adddesignation($event,add.value)" >
+    <label>DESIGNATION:</label>
+    <input type="text" id="dd" name="def" [(ngModel)]="NAME">
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+  <h2>UPDATE DESIGNATION</h2>
+  <form  (ngSubmit)="updatedesignation($event,add.value)" >
+    <label>DESIGNATION:</label>
+    <input type="text"  name="ewre" [(ngModel)]="UNAME">
+    <br>
+    <label>ENABLE:</label>
+    <select id="dPPPP" name="dpPPPP" [(ngModel)]="ENABLE">
+      <option>Y</option>
+      <option>N</option>
+    </select>
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+</div>
+<div *ngIf="skill" >
+  <h2>ADD SKILLSET</h2>
+  <form #add ="ngForm" (ngSubmit)="addskill($event,add.value)" >
+    <label>SKILLSET:</label>
+    <input type="text" id="sk" name="sks" [(ngModel)]="NAME">
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+  <h2>UPDATE SKILLSET</h2>
+  <form  (ngSubmit)="updateskill($event,add.value)" >
+    <label>SKILLSET:</label>
+    <input type="text"  name="ewre" [(ngModel)]="UNAME">
+    <br>
+    <label>ENABLE:</label>
+    <select id="dPPPP" name="dpPPPP" [(ngModel)]="ENABLE">
+      <option>Y</option>
+      <option>N</option>
+    </select>
+    <br>
+    <button type="submit" value="submit">Submit</button>
+  </form>
+</div>

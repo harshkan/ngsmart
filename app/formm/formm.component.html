@@ -1,0 +1,14 @@
+<div  *ngIf="data" >
+<ol>
+   <li *ngFor="let i of arr">
+  <input type=text name="tyu" [(ngModel)]="req[i]">
+</li>
+{{req|json}}
+</ol>
+
+
+</div>
+<div *ngIf="!data">
+  <input type=number name ="nnnn" [(ngModel)]="no">
+  <button type="submit" value="submit" (click)="sub()">submit</button>
+</div>
