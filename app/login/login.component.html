@@ -1,0 +1,11 @@
+<div class="container">
+    <form  (ngSubmit)="login()" #loginForm="ngForm">
+
+        <h2 >Please sign in</h2>
+        <label>GPN</label>
+        <input type="number" class="form-control"  [(ngModel)]="loginData.GPN" name="GPN" required/>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" class="form-control" [(ngModel)]="loginData.password" name="password" required/>
+        <button type="submit" [disabled]="!loginForm.form.valid">Sign in</button>
+      </form>
+</div>
