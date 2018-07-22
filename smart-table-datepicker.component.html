@@ -1,0 +1,18 @@
+<!--<div class="input-group">
+  <span [owlDateTimeTrigger]="dt" class="input-group-addon"><i class="fa fa-calendar"></i></span>
+  <input
+    [owlDateTimeTrigger]="dt" [owlDateTime]="dt"
+    [(ngModel)]="inputModel"
+    placeholder="{{placeholder}}"
+    [min]='min' [max]='max'
+    readonly
+    class="form-control">
+</div>
+<owl-date-time #dt [stepMinute]="15" [hour12Timer]='true' (afterPickerClosed)="onChange()"></owl-date-time>
+
+-->
+<mat-form-field>
+  <input matInput [(ngModel)]="inputModel" [matDatepicker]="picker" (dateChange)="onChange()" placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
